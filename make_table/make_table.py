@@ -43,6 +43,4 @@ while readline:
         print('=============================',s1,'找不到')
     readline = f.readline()
 
-
-
 df1.to_excel('./tuihuo_table.xlsx')
