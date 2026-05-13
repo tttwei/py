@@ -92,6 +92,9 @@ def main(x):
         time.sleep(0.5)
 
 # def listener():
+def press_f9():
+    threading.Thread(target=lambda : main(x1.get())).start()
+
 def press_f10():
     threading.Thread(target=get_mouse).start()
 
@@ -101,7 +104,9 @@ def press_f11():
 
 h = keyboard.GlobalHotKeys({
     '<F10>':press_f10,
-    '<F11>':press_f11
+    '<F11>':press_f11,
+    '<F9>':press_f9,
+
 })
 h.start()
 

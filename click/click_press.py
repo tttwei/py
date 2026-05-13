@@ -8,7 +8,7 @@ from pynput import keyboard
 '''
 def to_click1():
     print('触发了')
-    x, y = pyautogui.locateCenterOnScreen('./img/qianniu2.png',region= (597, 1142,703,58), confidence=0.9)
+    x, y = pyautogui.locateCenterOnScreen('./img/qianniu3.png',region= (597, 1142,703,58), confidence=0.9)
     pyautogui.click(x, y,duration=0.1)
     # print(x,y)
 
@@ -17,7 +17,7 @@ def to_click1():
 
 def to_click2():
     print('触发了')
-    x, y = pyautogui.locateCenterOnScreen('./img/qianniu2.png',region= (597, 1142,703,58), confidence=0.9)
+    x, y = pyautogui.locateCenterOnScreen('./img/qianniu3.png',region= (597, 1142,703,58), confidence=0.9)
     pyautogui.click(x, y,duration=0.1)
     # print(x,y)
 
