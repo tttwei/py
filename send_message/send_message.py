@@ -3,6 +3,8 @@ import time
 import sys
 from datetime import datetime
 from tkinter import *
+from tkinter import ttk
+
 import pyautogui
 import pyperclip
 
@@ -128,8 +130,50 @@ Label(top,text='订单').pack()
 e1 = Entry(top,textvariable=s1)
 e1.pack()
 Label(top,text='类型').pack()
-e2 = Entry(top,textvariable=s2)
-e2.pack()
+# e2 = Entry(top,textvariable=s2)
+# e2.pack()
+
+
+cmb = ttk.Combobox(top, textvariable=s2)
+
+cmb['values'] = (
+    '金香鸭屎',
+    '庄园鸭屎',
+    '庄园蜜兰',
+    '岽顶蜜兰香',
+    '购物金',
+    '庄园东方红',
+    '庄园锯朵仔',
+    '浓香芝兰',
+    '清香桂花',
+
+    '悠山蜜兰',
+    '六大',
+    '六大进阶',
+    '九大',
+    '四大老丛',
+
+    '十年陈蜜兰香',
+    '十年陈鸭屎香',
+
+    '老丛私房鸭屎香',
+    '老丛私房蜜兰香',
+     '老丛私房八仙',
+    '老丛私房东方红',
+     '老丛私房宋种',
+    '老丛私房凹富后',
+    '老丛私房姜花香',
+    '鸭屎蜜兰',
+    '鸭屎桂花',
+    '鸭屎锯朵',
+    '鸭屎岽顶',
+
+)
+
+cmb.current(0)  # 默认选中第一个
+
+cmb.pack()
+
 
 b1 = Button(top,text='批量发送',command=all_send)
 b1.pack(side="left",ipadx=5, padx=20)
