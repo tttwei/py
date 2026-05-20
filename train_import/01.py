@@ -1,24 +1,22 @@
-# from pynput import keyboard
-#
-# def start():
-#     print("开始")
-#
-# def stop():
-#     print("停止")
-#
-# h = keyboard.GlobalHotKeys({
-#     '<f8>': start,
-#     '<f9>': stop
-# })
-#
-# h.start()
-# h.join()
+from playwright.sync_api import sync_playwright
 
-try:
-    a = 1/2
-except Exception as e:
-    print('异常',e)
-finally:
-    print('异常处理完成')
+with sync_playwright() as p:
 
-print('执行中')
+    browser = p.chromium.launch(
+        channel="chrome",
+        headless=False
+    )
+
+    page = browser.new_page()
+
+    page.goto("https://www.baidu.com")
+
+    # 输入“你好”
+    page.fill("#kw", "你好")
+
+    # 回车搜索
+    page.keyboard.press("Enter")
+
+    input("按回车关闭")
+
+    browser.close()
