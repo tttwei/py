@@ -8,14 +8,14 @@ import pandas as pd
 # 字段 '订单编号','退款金额','商家备注'
 # df = pd.read_excel('./db/order_all.xlsx')
 # 字段 主订单编号 商品标题 商品属性
-df2 = pd.read_excel('./db/good0515.xlsx')
+df2 = pd.read_excel('./db/good0522.xlsx')
 
 # df['订单编号'] = df['订单编号'].astype(str)
 df2['主订单编号'] = df2['主订单编号'].astype(str)
 # df2['订单创建时间'] = pd.to_datetime(df2['订单创建时间'])
 
-# start = "2026-03-23 00:00:00"
-# end = "2026-03-23 23:59:59"
+# start = "2026-05-19 00:00:00"
+# end = "2026-05-21 23:59:59"
 
 new_df = df2.loc[:,['主订单编号','订单创建时间','退款金额','商家备注']]
 # new_df = df2.loc[:100,['主订单编号','订单创建时间','退款金额','商家备注']]
