@@ -37,8 +37,8 @@ for i in range(6):
             if '.' in obj2['stockQtty']['value']:
                 val = obj2['stockQtty']['value'].split('.')[0]
 
-            print(val)
-            print(city)
+            # print(val)
+            # print(city)
 
             df.loc[i,city] = val
 
@@ -47,4 +47,4 @@ for i in range(6):
         # break
 
 print(str(df))
-df.to_excel('./jd_warehouse.xlsx')
+# df.to_excel('./jd_warehouse.xlsx')

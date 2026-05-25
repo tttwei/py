@@ -110,8 +110,8 @@ def send_text():
         pyautogui.press('enter')
 
 
-        # time.sleep(0.2)
-        time.sleep(0.8)
+        time.sleep(0.2)
+        # time.sleep(0.8)
 
 def start_send_F6():
     t = threading.Thread(target=send_text)
@@ -120,8 +120,8 @@ def start_send_F6():
 def stop_text():
     print('停止')
     change(1)
-    # time.sleep(1)
-    time.sleep(1.5)
+    time.sleep(1)
+    # time.sleep(1.5)
     change(0)
 
 def reset():

@@ -1,3 +1,4 @@
+import os
 import threading
 
 import pyautogui
@@ -6,9 +7,13 @@ from pynput import keyboard
 '''
 
 '''
+dir_path = os.path.dirname(os.path.abspath(__file__))
+
+qianniu3_path = os.path.join(dir_path,'img','qianniu3.png')
+
 def to_click1():
     print('触发了')
-    x, y = pyautogui.locateCenterOnScreen('./img/qianniu3.png',region= (597, 1142,703,58), confidence=0.9)
+    x, y = pyautogui.locateCenterOnScreen(qianniu3_path,region= (597, 1142,703,58), confidence=0.9)
     pyautogui.click(x, y,duration=0.1)
     # print(x,y)
 
@@ -17,7 +22,7 @@ def to_click1():
 
 def to_click2():
     print('触发了')
-    x, y = pyautogui.locateCenterOnScreen('./img/qianniu3.png',region= (597, 1142,703,58), confidence=0.9)
+    x, y = pyautogui.locateCenterOnScreen(qianniu3_path,region= (597, 1142,703,58), confidence=0.9)
     pyautogui.click(x, y,duration=0.1)
     # print(x,y)
 

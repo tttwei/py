@@ -1,3 +1,4 @@
+import os
 import threading
 import time
 import sys
@@ -49,12 +50,16 @@ top.title('send_message')
 s1 = StringVar()
 s2 = StringVar()
 
+
+dir_path = os.path.dirname(os.path.abspath(__file__))
+
 # 浏览器位置
 
 
 def my_send_msg(order_num,tee_type):
     # num = '2701754007048029192'
-    x, y = pyautogui.locateCenterOnScreen('./img/edge.png', region=(597, 1142, 703, 58), confidence=0.9)
+    edge_path = os.path.join(dir_path,'img','edge.png')
+    x, y = pyautogui.locateCenterOnScreen(edge_path, region=(597, 1142, 703, 58), confidence=0.9)
     # x, y = pyautogui.locateCenterOnScreen('./img/edge.png', confidence=0.7)
     # print(datetime.now())
     # if order_num == '' or tee_type == '':
