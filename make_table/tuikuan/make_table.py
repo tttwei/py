@@ -33,8 +33,9 @@ while readline:
     # print(row)
     for index,row in df.iterrows():
         if s1 in row['退货单号']:
-            if row['退款金额'] == 0:
+            if row['退款金额'] == 0 or row['退款金额'] == '换货':
                 s3 = '换货'
+                row['退款金额'] = 0
             my_list = [my_now_date, '天猫', row['订单编号'],row['旺旺'],'',s2,s3,'口感不合适',s1,row['退款金额'],]
             df1.loc[len(df1)] = my_list
     # print(my_list)
