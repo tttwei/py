@@ -6,6 +6,9 @@ import pandas as pd
 # from streamlit import dataframe
 import requests
 
+from application import request_header
+
+my_json = request_header.jd_warehouse_header
 
 my_url='https://szgateway.jd.com/api/inventoryajax/lowcf/v1/inventoryOverview/overviewDetail.ajax'
 

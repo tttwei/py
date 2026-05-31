@@ -4,9 +4,13 @@ import time
 import pandas as pd
 import requests
 
+from application import request_header
+
 # f = open('a.json','r',encoding='utf-8')
 
 # data = json.load(f)
+
+my_json = request_header.jd_self_header
 
 my_url = 'https://aic.cbbs.tmall.com/aic-report/queryAicInventory'
 
