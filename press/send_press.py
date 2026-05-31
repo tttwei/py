@@ -8,6 +8,14 @@ from tkinter import *
 from pynput import keyboard
 
 pyautogui.PAUSE = 0  # 关闭默认暂停
+
+# 设置速度模式
+FAST = {'send':0.2,'stop':1,'mode':'fast'}
+SLOW = {'send':0.7,'stop':1.5,'mode':'slow'}
+
+press_mode = SLOW
+
+
 # time.sleep(3)
 # 1为禁止发送
 status_code = 0
@@ -110,8 +118,8 @@ def send_text():
         pyautogui.press('enter')
 
 
-        time.sleep(0.2)
-        # time.sleep(0.8)
+        time.sleep(press_mode['send'])
+        # time.sleep(0.7)
 
 def start_send_F6():
     t = threading.Thread(target=send_text)
@@ -120,7 +128,7 @@ def start_send_F6():
 def stop_text():
     print('停止')
     change(1)
-    time.sleep(1)
+    time.sleep(press_mode['stop'])
     # time.sleep(1.5)
     change(0)
 
@@ -132,7 +140,7 @@ def press_F7():
     t = threading.Thread(target=stop_text)
     t.start()
 
-l1 = Label(top,text='F6发送 F7停止')
+l1 = Label(top,text=f'F6发送 F7停止 当前{press_mode["mode"]}')
 l1.pack()
 
 btn1 = Button(top,text='发送',command=start_send_F6)
