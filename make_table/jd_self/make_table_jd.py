@@ -24,11 +24,12 @@ df3 = pd.DataFrame({
 for idx,row in df.iterrows():
     print(row['仓库CODE'])
     # print(row.loc[0,'仓库CODE'])
-    df3.loc[df3['仓库CODE'] == row['仓库CODE'],'500g庄园鸭屎：1003113910434'] = row['IPM可售']
+    df3.loc[df3['仓库CODE'] == row['仓库CODE'],'500g庄园鸭屎：1003113910434'] = row['IPM占用']+row['IPM可售']
+    # print(type(row['IPM占用']))
 
 for idx,row in df2.iterrows():
     print(row['仓库CODE'])
     # print(row.loc[0,'仓库CODE'])
-    df3.loc[df3['仓库CODE'] == row['仓库CODE'], '500g金香鸭屎：1002493667950'] = row['IPM可售']
+    df3.loc[df3['仓库CODE'] == row['仓库CODE'], '500g金香鸭屎：1002493667950'] = row['IPM占用']+row['IPM可售']
 
 df3.to_excel('b_total.xlsx')
