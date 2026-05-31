@@ -117,7 +117,8 @@ def my_send_msg(order_num,tee_type):
 
 # 读取文件
 def together_read():
-    f = open('a.txt', 'r', encoding='utf-8')
+    a_path = os.path.join(dir_path,'a.txt')
+    f = open(a_path, 'r', encoding='utf-8')
     readline = f.readline()
     while readline:
         str_array = readline.replace("\n","").split(' ')
