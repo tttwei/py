@@ -1,7 +1,24 @@
 import json
+import time
+from datetime import datetime, timedelta
 
 import pandas as pd
 # from streamlit import dataframe
+import requests
+
+
+my_url='https://szgateway.jd.com/api/inventoryajax/lowcf/v1/inventoryOverview/overviewDetail.ajax'
+
+
+today = datetime.now()
+# 计算前一天日期
+yesterday = today - timedelta(days=1)
+# 格式化为字符串
+# yesterday_str = "2026-05-29"
+yesterday_str = yesterday.strftime("%Y-%m-%d")
+print("前一天日期：", yesterday_str)
+print("前一天日期：", type(yesterday_str))
+
 
 row = {
     'id':'0',
@@ -25,10 +42,34 @@ df['id'] = ['100339810862',
 '100339810882']
 
 for i in range(6):
-    f = open(f'w{i+1}.json','r',encoding='utf-8')
+    # f = open(f'w{i+1}.json','r',encoding='utf-8')
     # print(f)
+    print(f'开始执行，第{i}')
+    time.sleep(3)
+    my_data = {"startDate": yesterday_str, "endDate": yesterday_str, "compareStartDate": yesterday_str,
+               "compareEndDate": yesterday_str,
+               "compareType": "yoy", "dateType": "yestoday", "tab": "stockingWarehouseAnalysis",
+               "brandCode": ["142649"],
+               "thirdCategoryId": ["36956"],
+               "kpis": ["spotStockTurnover", "instockPvRatio", "instockRatio", "bsInstockRatio", "stockAmt",
+                        "stockQtty", "spotStockAmt",
+                        "spotStockQtty", "usableStockAmt", "availableStockQtty", "canOrdQtty", "outWhSaleAmt",
+                        "outWhSaleQtty",
+                        "validSaleQtty", "purchaseInAmt", "purchaseInQtty", "purchaseOnwayAmt", "purchaseOnwayQtty",
+                        "purchaseOnwayBackQtty", "purchaseOnwayBookQtty", "purchaseValidAmt", "purchaseValidQtty",
+                        "returnSuppQtty"],
+               "skuId": [df['id'][i]]}
+
+    response = requests.post(
+        url=my_url,
+        headers=my_json,
+        json=my_data
+    )
+
+    # print('响应:', response.text)
     try:
-        data = json.load(f)
+        # data = json.load(f)
+        data = response.json()
 
         for obj2 in data['content']['datas']:
             val = '0'
@@ -47,4 +88,8 @@ for i in range(6):
         # break
 
 print(str(df))
-# df.to_excel('./jd_warehouse.xlsx')
+try:
+    df.to_excel('./jd_warehouse.xlsx')
+except PermissionError as e:
+    print('error:',e)
+    df.to_excel(f'./jd_warehouse副本{yesterday}.xlsx')
