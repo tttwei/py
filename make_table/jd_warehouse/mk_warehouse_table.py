@@ -1,11 +1,9 @@
 import json
 import time
 from datetime import datetime, timedelta
-
 import pandas as pd
-# from streamlit import dataframe
-import requests
 
+import requests
 from application import request_header
 
 my_json = request_header.jd_warehouse_header
@@ -33,18 +31,28 @@ row = {
     '沈阳': '0',
     '武汉': '0',
     '西安': '0',
+    '广州大商超': '0',
+    '上海零售': '0',
+    '武汉大商超': '0',
+    '北京大商超': '0',
+    '西安大商超': '0',
+    '成都大商超': '0',
+    '沈阳大商超': '0'
 }
 
-df = pd.DataFrame(row,index=[0,1,2,3,4,5])
+df = pd.DataFrame(row,index=[0,1,2,3,4,5,6,7,8])
 
 df['id'] = ['100339810862',
 '100340414948',
 '100339810828',
 '100339810826',
 '100340414968',
-'100339810882']
+'100339810882',
+'100369453694',
+'100349174078',
+'100349174076']
 
-for i in range(6):
+for i in range(len(df['id'])):
     # f = open(f'w{i+1}.json','r',encoding='utf-8')
     # print(f)
     print(f'开始执行，第{i}')
@@ -68,6 +76,7 @@ for i in range(6):
         headers=my_json,
         json=my_data
     )
+    print('网络状态码', response.status_code)
 
     # print('响应:', response.text)
     try:
@@ -95,4 +104,4 @@ try:
     df.to_excel('./jd_warehouse.xlsx')
 except PermissionError as e:
     print('error:',e)
-    df.to_excel(f'./jd_warehouse副本{yesterday}.xlsx')
+    df.to_excel(f'./jd_warehouse副本.xlsx')
