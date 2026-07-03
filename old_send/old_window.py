@@ -32,7 +32,7 @@ def change(idx):
     order_number.set(row['主订单编号'])
     type_tee.set(row['茶叶类型'])
     index_var.set(idx)
-    if '待发货' in row['商家备注'] or '待 发货' in row['商家备注']:
+    if '待发货' in row['商家备注'] or '待 发货' in row['商家备注'] or '待  发货' in row['商家备注'] or '待   发货' in row['商家备注']:
         top.config(bg='red')
         status_code = 2
         return 2

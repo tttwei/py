@@ -9,15 +9,15 @@ import pandas as pd
 # df = pd.read_excel('./db/order_all.xlsx')
 # 字段 主订单编号 商品标题 商品属性
 # ⭐
-df2 = pd.read_excel('./db/old0520.xlsx')
+df2 = pd.read_excel('./db/old0625.xlsx')
 
 # df['订单编号'] = df['订单编号'].astype(str)
 df2['主订单编号'] = df2['主订单编号'].astype(str)
 # df2['订单创建时间'] = pd.to_datetime(df2['订单创建时间'])
 
 # ⭐
-start = "2026-04-27 00:00:00"
-end = "2026-04-27 23:59:59"
+start = "2026-06-08 00:00:00"
+end = "2026-06-08 23:59:59"
 
 new_df = df2.loc[(df2['订单创建时间'] >= start) & (df2['订单创建时间'] <= end),['主订单编号','订单创建时间','退款金额','商家备注']]
 # new_df = df2.loc[0:100,['主订单编号','订单创建时间','退款金额','商家备注']]

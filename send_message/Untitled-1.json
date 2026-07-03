@@ -1,5 +1,5 @@
 {
-    "traceId": "213e03ae17794170132411206e0c0b",
+    "traceId": "213e047517830408365586684e0c12",
     "isTmall": "true",
     "isQnNewHideNick": "true",
     "isUnionSearch": "true",
@@ -7,15 +7,15 @@
         "payDateBegin": 0,
         "rateStatus": "ALL",
         "buyerNick": "",
-        "orderStatus": "NOT_PAID",
+        "orderStatus": "DROP",
         "pageSize": 15,
-        "dateEnd": 1779411600000,
+        "dateEnd": 1783040400000,
         "endTimeBegin": 0,
         "endTimeEnd": 0,
         "rxOldFlag": 0,
         "rxSendFlag": 0,
         "useCheckcode": false,
-        "dateBegin": 1779372000000,
+        "dateBegin": 1783000800000,
         "tradeTag": 0,
         "extra": {},
         "action": "itemlist/SoldQueryAction",
@@ -39,7 +39,7 @@
         "payDateEnd": 0,
         "rxWaitSendflag": 0,
         "sellerMemo": 0,
-        "tabCode": "waitBuyerPay",
+        "tabCode": "closed",
         "queryBizType": "ALL",
         "rxElectronicAllFlag": 0,
         "rxSuccessflag": 0,
@@ -56,8 +56,7 @@
         {
             "herf": "/trade/itemlist/list_sold_items.htm?action=itemlist/SoldQueryAction&event_submit_do_query=1&auctionStatus=NOT_PAID&tabCode=waitBuyerPay",
             "code": "waitBuyerPay",
-            "text": "待付款",
-            "selected": true
+            "text": "待付款"
         },
         {
             "herf": "/trade/itemlist/list_sold_items.htm?action=itemlist/SoldQueryAction&event_submit_do_query=1&auctionStatus=HOLD&tabCode=confirmation",
@@ -97,7 +96,8 @@
         {
             "herf": "/trade/itemlist/list_sold_items.htm?action=itemlist/SoldQueryAction&event_submit_do_query=1&auctionStatus=DROP&tabCode=closed",
             "code": "closed",
-            "text": "已关闭"
+            "text": "已关闭",
+            "selected": true
         },
         {
             "herf": "/trade/itemlist/list_sold_items.htm?action=itemlist/SoldHisQueryAction&event_submit_do_query=1&tabCode=before3Months",
@@ -205,6 +205,10 @@
                         "value": "newCommodity"
                     },
                     {
+                        "label": "新品前N订单",
+                        "value": "newCommodityFrontN"
+                    },
+                    {
                         "label": "礼物订单",
                         "value": "giftOrder"
                     },
@@ -306,7 +310,7 @@
                 ]
             },
             "orderStatus": {
-                "default": "NOT_PAID",
+                "default": "DROP",
                 "x-decorator": "FormItem",
                 "x-component": "Select",
                 "x-decorator-props": {},
@@ -415,12 +419,8 @@
                         "value": "SELECT_TIME_DELIVERY"
                     },
                     {
-                        "label": "加价选顺丰-自行联系",
-                        "value": "zxkf_sf"
-                    },
-                    {
-                        "label": "加价选顺丰-托管模式",
-                        "value": "zxkf_sf_tg"
+                        "label": "加价选顺丰",
+                        "value": "zxkf_sf_all"
                     },
                     {
                         "label": "新疆中转",
@@ -529,6 +529,28 @@
                     }
                 ]
             },
+            "isRiskOrder": {
+                "default": "0",
+                "x-decorator": "FormItem",
+                "x-component": "Select",
+                "x-decorator-props": {},
+                "id": "27",
+                "x-component-props": {},
+                "x-validator": [],
+                "x-disabled": false,
+                "title": "预警提示",
+                "x-index": 16,
+                "enum": [
+                    {
+                        "label": "全部",
+                        "value": "0"
+                    },
+                    {
+                        "label": "有预警",
+                        "value": "1"
+                    }
+                ]
+            },
             "deliveryTimeType": {
                 "default": "ALL",
                 "x-decorator": "FormItem",
@@ -569,8 +591,8 @@
             },
             "[dateBegin,dateEnd]": {
                 "default": [
-                    "1779372000000",
-                    "1779411600000"
+                    "1783000800000",
+                    "1783040400000"
                 ],
                 "x-decorator": "FormItem",
                 "x-component": "DateRangePicker",
@@ -713,7 +735,7 @@
                 "xlsx"
             ]
         },
-        "batchButtonListV2": "{\"outButtonList\":[{\"buttonText\":\"批量标记\",\"buttonType\":\"batchMark\",\"params\":{}},{\"buttonText\":\"批量免运费\",\"buttonType\":\"batchFreeShip\",\"params\":{\"url\":\"//trade.taobao.com/trade/freePostFee.htm\"}}],\"insideButtonList\":[{\"buttonText\":\"批量导入识别码\",\"buttonType\":\"batchImportSn\",\"params\":{}},{\"actionType\":\"jump\",\"buttonText\":\"批量极速回款\",\"domainTags\":[\"fast_disburse_tm_sellers\",\"fast_disburse_tb_sellers\"],\"params\":{\"btnId\":\"batchFastRefund\",\"jumpUrl\":\"https://b2bfin.taobao.com/enter/ecreditbao/pc?tracelog=baobeiBtn\"},\"serviceTags\":[],\"styleType\":\"normal\"},{\"actionType\":\"jump\",\"buttonText\":\"去发优惠券\",\"domainTags\":[],\"params\":{\"jumpUrl\":\"https://qn.taobao.com/home.htm/coupon/create?couponType=0&tagId=1977850001\"},\"serviceTags\":[],\"styleType\":\"normal\"}]}",
+        "batchButtonListV2": "{\"outButtonList\":[{\"buttonText\":\"批量标记\",\"buttonType\":\"batchMark\",\"params\":{}}],\"insideButtonList\":[{\"buttonText\":\"批量导入识别码\",\"buttonType\":\"batchImportSn\",\"params\":{}},{\"actionType\":\"jump\",\"buttonText\":\"批量极速回款\",\"domainTags\":[\"fast_disburse_tm_sellers\",\"fast_disburse_tb_sellers\"],\"params\":{\"btnId\":\"batchFastRefund\",\"jumpUrl\":\"https://b2bfin.taobao.com/enter/ecreditbao/pc?tracelog=baobeiBtn\"},\"serviceTags\":[],\"styleType\":\"normal\"},{\"actionType\":\"jump\",\"buttonText\":\"去发优惠券\",\"domainTags\":[],\"params\":{\"jumpUrl\":\"https://qn.taobao.com/home.htm/coupon/create?couponType=0&tagId=1977850001\"},\"serviceTags\":[],\"styleType\":\"normal\"}]}",
         "userNumId": 2208729943616,
         "batchSendGoods": true,
         "newSellerMemo": true,
@@ -790,6 +812,10 @@
             {
                 "label": "试销订单",
                 "value": "newCommodity"
+            },
+            {
+                "label": "新品前N订单",
+                "value": "newCommodityFrontN"
             }
         ],
         "holdStatus": [
@@ -1050,7 +1076,7 @@
         ]
     },
     "page": {
-        "totalNumber": 1,
+        "totalNumber": 3,
         "totalPage": 1,
         "globalCodes": [],
         "pageSize": 15,
@@ -1061,16 +1087,16 @@
         {
             "operations": [
                 {
-                    "dataUrl": "/trade/json/memoInfo.htm?user_type=seller&_input_charset=utf-8&orderid=5116560483966101315",
+                    "dataUrl": "/trade/json/memoInfo.htm?user_type=seller&_input_charset=utf-8&orderid=3311278536210010462",
                     "style": "thead",
                     "id": "flag",
                     "text": "编辑标记信息，仅自己可见",
                     "params": {
                         "needQnJumpOld": "false",
-                        "qianNiuUpdateMemoUrl": "/trade/memo/update_sell_memo_qian_niu.htm?seller_id=2208729943616&biz_order_id=5116560483966101315&user_type=1&pageNum=1&auctionTitle=null&dateBegin=1779372000000&dateEnd=1779411600000&commentStatus=ALL&buyerNick=&auctionStatus=NOT_PAID&logisticsService=ALL"
+                        "qianNiuUpdateMemoUrl": "/trade/memo/update_sell_memo_qian_niu.htm?seller_id=2208729943616&biz_order_id=3311278536210010462&user_type=1&pageNum=1&auctionTitle=null&dateBegin=1783000800000&dateEnd=1783040400000&commentStatus=ALL&buyerNick=&auctionStatus=DROP&logisticsService=ALL"
                     },
                     "type": "operation",
-                    "url": "/trade/memo/update_sell_memo.htm?seller_id=2208729943616&biz_order_id=5116560483966101315&user_type=1&pageNum=1&auctionTitle=null&dateBegin=1779372000000&dateEnd=1779411600000&commentStatus=ALL&buyerNick=&auctionStatus=NOT_PAID&logisticsService=ALL"
+                    "url": "/trade/memo/update_sell_memo.htm?seller_id=2208729943616&biz_order_id=3311278536210010462&user_type=1&pageNum=1&auctionTitle=null&dateBegin=1783000800000&dateEnd=1783040400000&commentStatus=ALL&buyerNick=&auctionStatus=DROP&logisticsService=ALL"
                 }
             ],
             "statusInfo": {
@@ -1079,31 +1105,20 @@
                         "style": "t16",
                         "text": "详情",
                         "params": {
-                            "qianNiuPCDetailUrl": "//qn.taobao.com/home.htm/trade-platform/tp/detail?bizOrderId=5116560483966101315",
-                            "solutionPCDetailUrl": "//trade.tmall.com/detail/orderDetail.htm?bizOrderId=5116560483966101315"
+                            "qianNiuPCDetailUrl": "//qn.taobao.com/home.htm/trade-platform/tp/detail?bizOrderId=3311278536210010462",
+                            "solutionPCDetailUrl": "//trade.tmall.com/detail/orderDetail.htm?bizOrderId=3311278536210010462"
                         },
                         "type": "operation",
-                        "url": "//trade.tmall.com/detail/orderDetail.htm?bizOrderId=5116560483966101315"
-                    },
-                    {
-                        "data": {
-                            "width": 540,
-                            "crossOrigin": false,
-                            "height": 340
-                        },
-                        "bizOrderId": "5116560483966101315",
-                        "action": "a33",
-                        "style": "t16",
-                        "text": "关闭交易",
-                        "type": "operation"
+                        "url": "//trade.tmall.com/detail/orderDetail.htm?bizOrderId=3311278536210010462"
                     }
                 ],
-                "text": "等待买家付款",
+                "text": "交易关闭",
                 "type": "t0"
             },
             "extra": {
                 "usePrivacyPhone": true,
                 "sellerFlag": 0,
+                "closed": true,
                 "currencySymbol": "￥",
                 "inHold": false,
                 "isShowSellerService": false,
@@ -1114,23 +1129,31 @@
             },
             "orderInfo": {
                 "b2C": true,
-                "createTime": "2026-05-21 22:00:40",
-                "id": "5116560483966101315"
+                "createTime": "2026-07-03 06:43:42",
+                "id": "3311278536210010462"
             },
-            "id": "5116560483966101315",
+            "id": "3311278536210010462",
             "subOrders": [
                 {
-                    "idStr": "5116560483966138142",
+                    "idStr": "3311278536210047289",
                     "priceInfo": {
-                        "realTotal": "2199.00"
+                        "realTotal": "1999.00"
                     },
+                    "operations": [
+                        {
+                            "style": "t16",
+                            "text": "退款成功",
+                            "type": "operation",
+                            "url": "//refund2.taobao.com/dispute/detail.htm?disputeType=0&bizOrderId=3311278536210047289"
+                        }
+                    ],
                     "quantity": "1",
                     "returnAddressVO": {
                         "historyShow": false
                     },
-                    "id": 5116560483966138142,
+                    "id": 3311278536210047289,
                     "itemInfo": {
-                        "subId": "5116560483966138142",
+                        "subId": "3311278536210047289",
                         "skuText": [
                             {
                                 "visible": "SOLID",
@@ -1140,11 +1163,432 @@
                             {
                                 "visible": "SOLID",
                                 "name": "口味",
-                                "value": "炭烧口味"
+                                "value": "浓香型：庄园蜜兰500g超值装"
                             }
                         ],
-                        "pic": "//img.alicdn.com/imgextra/i1/2208729943616/O1CN01W18uoo1caBJdE1yH3_!!4611686018427383360-0-item_pic.jpg_sum.jpg",
-                        "title": "千庭单丛特级芝兰香茶叶 凤凰单枞茶潮州乌岽高山单丛乌龙茶500g",
+                        "pic": "//gsnapshot.alicdn.com/imgextra/O1CN01VanCaM1caBK9jLZHp_!!2208729943616-0-picasso.jpg_sum.jpg?time=1783032223000",
+                        "title": "千庭蜜兰香茶叶礼盒装 凤凰单枞潮州乌岽高山单丛乌龙茶500g",
+                        "serviceIcons": [
+                            {
+                                "linkTitle": "正品保证",
+                                "linkUrl": "//rule.tmall.com/tdetail-4400.htm",
+                                "name": "正品保证",
+                                "title": "正品保证",
+                                "type": 3,
+                                "url": "//img.alicdn.com/tps/i2/T1SyeXFpliXXaSQP_X-16-16.png"
+                            },
+                            {
+                                "linkTitle": "如实描述",
+                                "linkUrl": "//www.taobao.com/go/act/315/xfzbz_rsms.php?ad_id=&am_id=130011830696bce9eda3&cm_id=&pm_id=",
+                                "name": "如实描述",
+                                "title": "如实描述",
+                                "type": 3,
+                                "url": "//img.alicdn.com/tps/TB1PDB6IVXXXXaVaXXXXXXXXXXX.png"
+                            },
+                            {
+                                "linkTitle": "七天退换",
+                                "linkUrl": "//pages.tmall.com/wow/seller/act/seven-day",
+                                "name": "七天退换",
+                                "title": "七天退换",
+                                "type": 3,
+                                "url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
+                            },
+                            {
+                                "linkTitle": "价保期 2026-07-03 06:43:48 到 2026-07-10 06:43:47",
+                                "linkUrl": "//pages.tmall.com/wow/act/22351/priceprotection?wh_biz=tm",
+                                "name": "价保",
+                                "title": "价保",
+                                "type": 3,
+                                "url": "//img.alicdn.com/imgextra/i4/O1CN01JXwSMv1XQwvhbP5dZ_!!6000000002919-2-tps-16-16.png"
+                            }
+                        ],
+                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3311278536210047289&snapShot=true",
+                        "skuId": 0
+                    }
+                },
+                {
+                    "idStr": "3311278536210056471",
+                    "priceInfo": {
+                        "realTotal": "25.00"
+                    },
+                    "operations": [
+                        {
+                            "style": "t16",
+                            "text": "退款成功",
+                            "type": "operation",
+                            "url": "//refund2.taobao.com/dispute/detail.htm?disputeType=0&bizOrderId=3311278536210056471"
+                        }
+                    ],
+                    "quantity": "1",
+                    "returnAddressVO": {
+                        "historyShow": false
+                    },
+                    "id": 3311278536210056471,
+                    "itemInfo": {
+                        "subId": "3311278536210056471",
+                        "skuText": [],
+                        "pic": "//img.alicdn.com/imgextra/i1/2208729943616/O1CN013FvGoN1caB9lqLwkT_!!0-item_pic.jpg_sum.jpg",
+                        "title": "【庄园蜜兰】  品鉴装7g（特级）",
+                        "serviceIcons": [
+                            {
+                                "linkTitle": "赠品订单",
+                                "linkUrl": "//www.tmall.com",
+                                "name": "赠品订单",
+                                "title": "赠品订单",
+                                "type": 3,
+                                "url": "//img.alicdn.com/imgextra/i4/O1CN01WwowLc1ng674D57CC_!!6000000005118-2-tps-56-32.png"
+                            }
+                        ],
+                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3311278536210056471&snapShot=true",
+                        "skuId": 0
+                    }
+                },
+                {
+                    "idStr": "3311278536210065653",
+                    "priceInfo": {
+                        "realTotal": "58.00"
+                    },
+                    "operations": [
+                        {
+                            "style": "t16",
+                            "text": "退款成功",
+                            "type": "operation",
+                            "url": "//refund2.taobao.com/dispute/detail.htm?disputeType=0&bizOrderId=3311278536210065653"
+                        }
+                    ],
+                    "quantity": "1",
+                    "returnAddressVO": {
+                        "historyShow": false
+                    },
+                    "id": 3311278536210065653,
+                    "itemInfo": {
+                        "subId": "3311278536210065653",
+                        "skuText": [],
+                        "pic": "//img.alicdn.com/imgextra/i3/2208729943616/O1CN01zXqjuQ1caAsMeQkuc_!!0-item_pic.jpg_sum.jpg",
+                        "title": "【取茶3件套】茶则丨茶拨丨茶巾",
+                        "serviceIcons": [
+                            {
+                                "linkTitle": "赠品订单",
+                                "linkUrl": "//www.tmall.com",
+                                "name": "赠品订单",
+                                "title": "赠品订单",
+                                "type": 3,
+                                "url": "//img.alicdn.com/imgextra/i4/O1CN01WwowLc1ng674D57CC_!!6000000005118-2-tps-56-32.png"
+                            }
+                        ],
+                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3311278536210065653&snapShot=true",
+                        "skuId": 0
+                    }
+                }
+            ],
+            "payInfo": {
+                "postType": "(含快递:￥0.00)",
+                "icons": [
+                    {
+                        "linkTitle": "该订单来自您的手机淘宝店铺",
+                        "linkUrl": "http://www.taobao.com/go/act/integrated/maijia-index.php?sprefer=symj27",
+                        "type": 3,
+                        "url": "//img.alicdn.com/tps/i1/T1xRBqXdNAXXXXXXXX-46-16.png"
+                    }
+                ],
+                "actualFee": "987.01"
+            },
+            "buyer": {
+                "nick": "多**",
+                "operations": [
+                    {
+                        "imgUrl": "//gtd.alicdn.com/tps/i8/T1KNtuXc4rXXXXXXXX-12-12.png",
+                        "action": "a14",
+                        "style": "t0",
+                        "title": "查询该买家订单",
+                        "type": "operation",
+                        "url": "/trade/itemlist/list_sold_items.htm?action=itemlist/SoldQueryAction&event_submit_do_query=1"
+                    }
+                ],
+                "memberUrl": "",
+                "encodeNick": "多**",
+                "id": 0,
+                "guestUser": false,
+                "encodeId": "RAzN8HWQJQsGuHdhfdKrfooRd2ss9VwddYRD5KHUZoFZeQS1Vud"
+            },
+            "presentOrder": false
+        },
+        {
+            "operations": [
+                {
+                    "dataUrl": "/trade/json/memoInfo.htm?user_type=seller&_input_charset=utf-8&orderid=3310645011444009170",
+                    "action": "a2",
+                    "style": "thead",
+                    "id": "flag",
+                    "text": "编辑标记信息，仅自己可见",
+                    "params": {
+                        "needQnJumpOld": "false",
+                        "qianNiuUpdateMemoUrl": "/trade/memo/update_sell_memo_qian_niu.htm?seller_id=2208729943616&biz_order_id=3310645011444009170&user_type=1&pageNum=1&auctionTitle=null&dateBegin=1783000800000&dateEnd=1783040400000&commentStatus=ALL&buyerNick=&auctionStatus=DROP&logisticsService=ALL"
+                    },
+                    "type": "operation",
+                    "url": "/trade/memo/update_sell_memo.htm?seller_id=2208729943616&biz_order_id=3310645011444009170&user_type=1&pageNum=1&auctionTitle=null&dateBegin=1783000800000&dateEnd=1783040400000&commentStatus=ALL&buyerNick=&auctionStatus=DROP&logisticsService=ALL"
+                }
+            ],
+            "statusInfo": {
+                "operations": [
+                    {
+                        "style": "t16",
+                        "text": "详情",
+                        "params": {
+                            "qianNiuPCDetailUrl": "//qn.taobao.com/home.htm/trade-platform/tp/detail?bizOrderId=3310645011444009170",
+                            "solutionPCDetailUrl": "//trade.tmall.com/detail/orderDetail.htm?bizOrderId=3310645011444009170"
+                        },
+                        "type": "operation",
+                        "url": "//trade.tmall.com/detail/orderDetail.htm?bizOrderId=3310645011444009170"
+                    }
+                ],
+                "text": "交易关闭",
+                "type": "t0"
+            },
+            "extra": {
+                "usePrivacyPhone": true,
+                "sellerFlag": 1,
+                "closed": true,
+                "currencySymbol": "￥",
+                "inHold": false,
+                "isShowSellerService": false,
+                "currency": "CNY",
+                "sellerFlagPic": "https://img.alicdn.com/imgextra/i4/O1CN015SWzPn1ZYOkHKAWft_!!6000000003206-2-tps-120-120.png?getAvatar=avatar",
+                "batchSendGoods": 1,
+                "disableCheckbox": false
+            },
+            "orderInfo": {
+                "b2C": true,
+                "createTime": "2026-07-02 23:56:33",
+                "id": "3310645011444009170"
+            },
+            "id": "3310645011444009170",
+            "subOrders": [
+                {
+                    "idStr": "3310645011444018352",
+                    "priceInfo": {
+                        "realTotal": "1699.00"
+                    },
+                    "operations": [
+                        {
+                            "style": "t16",
+                            "text": "退款成功",
+                            "type": "operation",
+                            "url": "//refund2.taobao.com/dispute/detail.htm?disputeType=0&bizOrderId=3310645011444018352"
+                        }
+                    ],
+                    "quantity": "1",
+                    "returnAddressVO": {
+                        "historyShow": false
+                    },
+                    "id": 3310645011444018352,
+                    "itemInfo": {
+                        "subId": "3310645011444018352",
+                        "skuText": [
+                            {
+                                "visible": "SOLID",
+                                "name": "总净含量",
+                                "value": "300g"
+                            },
+                            {
+                                "visible": "SOLID",
+                                "name": "口味",
+                                "value": "组合装：六大香型300g（50g*6罐）"
+                            }
+                        ],
+                        "pic": "//gsnapshot.alicdn.com/imgextra/O1CN01c3Kj7p1caBK9UP7B1_!!2208729943616-0-picasso.jpg_sum.jpg?time=1783007794000",
+                        "title": "千庭单丛组合香型 鸭屎香蜜兰香芝兰香 潮州乌岽高山乌龙茶300g",
+                        "serviceIcons": [
+                            {
+                                "linkTitle": "正品保证",
+                                "linkUrl": "//rule.tmall.com/tdetail-4400.htm",
+                                "name": "正品保证",
+                                "title": "正品保证",
+                                "type": 3,
+                                "url": "//img.alicdn.com/tps/i2/T1SyeXFpliXXaSQP_X-16-16.png"
+                            },
+                            {
+                                "linkTitle": "如实描述",
+                                "linkUrl": "//www.taobao.com/go/act/315/xfzbz_rsms.php?ad_id=&am_id=130011830696bce9eda3&cm_id=&pm_id=",
+                                "name": "如实描述",
+                                "title": "如实描述",
+                                "type": 3,
+                                "url": "//img.alicdn.com/tps/TB1PDB6IVXXXXaVaXXXXXXXXXXX.png"
+                            },
+                            {
+                                "linkTitle": "七天退换",
+                                "linkUrl": "//pages.tmall.com/wow/seller/act/seven-day",
+                                "name": "七天退换",
+                                "title": "七天退换",
+                                "type": 3,
+                                "url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
+                            },
+                            {
+                                "linkTitle": "价保期 2026-07-02 23:56:34 到 2026-07-09 23:56:33",
+                                "linkUrl": "//pages.tmall.com/wow/act/22351/priceprotection?wh_biz=tm",
+                                "name": "价保",
+                                "title": "价保",
+                                "type": 3,
+                                "url": "//img.alicdn.com/imgextra/i4/O1CN01JXwSMv1XQwvhbP5dZ_!!6000000002919-2-tps-16-16.png"
+                            }
+                        ],
+                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3310645011444018352&snapShot=true",
+                        "skuId": 0
+                    }
+                },
+                {
+                    "idStr": "3310645011444035998",
+                    "priceInfo": {
+                        "realTotal": "88.00"
+                    },
+                    "operations": [
+                        {
+                            "style": "t16",
+                            "text": "退款成功",
+                            "type": "operation",
+                            "url": "//refund2.taobao.com/dispute/detail.htm?disputeType=0&bizOrderId=3310645011444035998"
+                        }
+                    ],
+                    "quantity": "1",
+                    "returnAddressVO": {
+                        "historyShow": false
+                    },
+                    "id": 3310645011444035998,
+                    "itemInfo": {
+                        "subId": "3310645011444035998",
+                        "skuText": [],
+                        "pic": "//img.alicdn.com/imgextra/i2/2208729943616/O1CN01pJKuCL1caBCASAE5t_!!4611686018427383360-0-item_pic.jpg_sum.jpg",
+                        "title": "【6泡品鉴装】6大香型品鉴装 7g/袋*6小袋",
+                        "serviceIcons": [
+                            {
+                                "linkTitle": "赠品订单",
+                                "linkUrl": "//www.tmall.com",
+                                "name": "赠品订单",
+                                "title": "赠品订单",
+                                "type": 3,
+                                "url": "//img.alicdn.com/imgextra/i4/O1CN01WwowLc1ng674D57CC_!!6000000005118-2-tps-56-32.png"
+                            }
+                        ],
+                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3310645011444035998&snapShot=true",
+                        "skuId": 0
+                    }
+                }
+            ],
+            "payInfo": {
+                "operations": [
+                    {
+                        "style": "t0",
+                        "text": "先用后付",
+                        "type": "operation"
+                    }
+                ],
+                "postType": "(含快递:￥0.00)",
+                "icons": [
+                    {
+                        "linkTitle": "该订单来自您的手机淘宝店铺",
+                        "linkUrl": "http://www.taobao.com/go/act/integrated/maijia-index.php?sprefer=symj27",
+                        "type": 3,
+                        "url": "//img.alicdn.com/tps/i1/T1xRBqXdNAXXXXXXXX-46-16.png"
+                    }
+                ],
+                "actualFee": "690.01"
+            },
+            "buyer": {
+                "nick": "新**",
+                "operations": [
+                    {
+                        "imgUrl": "//gtd.alicdn.com/tps/i8/T1KNtuXc4rXXXXXXXX-12-12.png",
+                        "action": "a14",
+                        "style": "t0",
+                        "title": "查询该买家订单",
+                        "type": "operation",
+                        "url": "/trade/itemlist/list_sold_items.htm?action=itemlist/SoldQueryAction&event_submit_do_query=1"
+                    }
+                ],
+                "memberUrl": "",
+                "encodeNick": "新**",
+                "id": 0,
+                "guestUser": false,
+                "encodeId": "RAzN8HWRD5w3T1xHmppTKmjT9cNkig42xaxymYm3hVPPsNFxPxm"
+            },
+            "presentOrder": false
+        },
+        {
+            "operations": [
+                {
+                    "dataUrl": "/trade/json/memoInfo.htm?user_type=seller&_input_charset=utf-8&orderid=3310642419138018389",
+                    "style": "thead",
+                    "id": "flag",
+                    "text": "编辑标记信息，仅自己可见",
+                    "params": {
+                        "needQnJumpOld": "false",
+                        "qianNiuUpdateMemoUrl": "/trade/memo/update_sell_memo_qian_niu.htm?seller_id=2208729943616&biz_order_id=3310642419138018389&user_type=1&pageNum=1&auctionTitle=null&dateBegin=1783000800000&dateEnd=1783040400000&commentStatus=ALL&buyerNick=&auctionStatus=DROP&logisticsService=ALL"
+                    },
+                    "type": "operation",
+                    "url": "/trade/memo/update_sell_memo.htm?seller_id=2208729943616&biz_order_id=3310642419138018389&user_type=1&pageNum=1&auctionTitle=null&dateBegin=1783000800000&dateEnd=1783040400000&commentStatus=ALL&buyerNick=&auctionStatus=DROP&logisticsService=ALL"
+                }
+            ],
+            "statusInfo": {
+                "operations": [
+                    {
+                        "style": "t16",
+                        "text": "详情",
+                        "params": {
+                            "qianNiuPCDetailUrl": "//qn.taobao.com/home.htm/trade-platform/tp/detail?bizOrderId=3310642419138018389",
+                            "solutionPCDetailUrl": "//trade.tmall.com/detail/orderDetail.htm?bizOrderId=3310642419138018389"
+                        },
+                        "type": "operation",
+                        "url": "//trade.tmall.com/detail/orderDetail.htm?bizOrderId=3310642419138018389"
+                    }
+                ],
+                "text": "交易关闭",
+                "type": "t0"
+            },
+            "extra": {
+                "usePrivacyPhone": true,
+                "sellerFlag": 0,
+                "closed": true,
+                "currencySymbol": "￥",
+                "inHold": false,
+                "isShowSellerService": false,
+                "currency": "CNY",
+                "sellerFlagPic": "https://img.alicdn.com/imgextra/i2/O1CN01k51piZ1htTu279fNe_!!6000000004335-2-tps-120-120.png?getAvatar=avatar",
+                "batchSendGoods": 1,
+                "disableCheckbox": false
+            },
+            "orderInfo": {
+                "b2C": true,
+                "createTime": "2026-07-02 22:16:11",
+                "id": "3310642419138018389"
+            },
+            "id": "3310642419138018389",
+            "subOrders": [
+                {
+                    "idStr": "3310642419138027571",
+                    "priceInfo": {
+                        "realTotal": "1899.00"
+                    },
+                    "quantity": "1",
+                    "returnAddressVO": {
+                        "historyShow": false
+                    },
+                    "id": 3310642419138027571,
+                    "itemInfo": {
+                        "subId": "3310642419138027571",
+                        "skuText": [
+                            {
+                                "visible": "SOLID",
+                                "name": "总净含量",
+                                "value": "500g[超值装]"
+                            },
+                            {
+                                "visible": "SOLID",
+                                "name": "口味",
+                                "value": "清香型：金香鸭屎500g超值装"
+                            }
+                        ],
+                        "pic": "//img.alicdn.com/imgextra/i1/2208729943616/O1CN01lI0yst1caBK8uvtEv_!!2208729943616.jpg_sum.jpg",
+                        "title": "千庭鸭屎香茶叶礼盒装 凤凰单枞潮州乌岽高山单丛乌龙茶500g",
                         "serviceIcons": [
                             {
                                 "linkTitle": "正品保证",
@@ -1171,12 +1615,12 @@
                                 "url": "//img.alicdn.com/tps/i3/T1Vyl6FCBlXXaSQP_X-16-16.png"
                             }
                         ],
-                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=5116560483966138142&snapShot=true",
+                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3310642419138027571&snapShot=true",
                         "skuId": 0
                     }
                 },
                 {
-                    "idStr": "5116560483966147324",
+                    "idStr": "3310642419138036753",
                     "priceInfo": {
                         "realTotal": "19.00"
                     },
@@ -1184,12 +1628,12 @@
                     "returnAddressVO": {
                         "historyShow": false
                     },
-                    "id": 5116560483966147324,
+                    "id": 3310642419138036753,
                     "itemInfo": {
-                        "subId": "5116560483966147324",
+                        "subId": "3310642419138036753",
                         "skuText": [],
-                        "pic": "//img.alicdn.com/imgextra/i2/2208729943616/O1CN01XR9aQR1caB6QA6TgC_!!0-item_pic.jpg_sum.jpg",
-                        "title": "【浓香芝兰】品鉴装7g",
+                        "pic": "//img.alicdn.com/imgextra/i2/2208729943616/O1CN01MvV1131caBGVqGEI2_!!4611686018427383360-0-item_pic.jpg_sum.jpg",
+                        "title": "【金香鸭屎】 品鉴装7g（特级）",
                         "serviceIcons": [
                             {
                                 "linkTitle": "赠品订单",
@@ -1200,12 +1644,12 @@
                                 "url": "//img.alicdn.com/imgextra/i4/O1CN01WwowLc1ng674D57CC_!!6000000005118-2-tps-56-32.png"
                             }
                         ],
-                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=5116560483966147324&snapShot=true",
+                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3310642419138036753&snapShot=true",
                         "skuId": 0
                     }
                 },
                 {
-                    "idStr": "5116560483966156506",
+                    "idStr": "3310642419138054399",
                     "priceInfo": {
                         "realTotal": "58.00"
                     },
@@ -1213,9 +1657,9 @@
                     "returnAddressVO": {
                         "historyShow": false
                     },
-                    "id": 5116560483966156506,
+                    "id": 3310642419138054399,
                     "itemInfo": {
-                        "subId": "5116560483966156506",
+                        "subId": "3310642419138054399",
                         "skuText": [],
                         "pic": "//img.alicdn.com/imgextra/i3/2208729943616/O1CN01zXqjuQ1caAsMeQkuc_!!0-item_pic.jpg_sum.jpg",
                         "title": "【取茶3件套】茶则丨茶拨丨茶巾",
@@ -1229,22 +1673,12 @@
                                 "url": "//img.alicdn.com/imgextra/i4/O1CN01WwowLc1ng674D57CC_!!6000000005118-2-tps-56-32.png"
                             }
                         ],
-                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=5116560483966156506&snapShot=true",
+                        "itemUrl": "//trade.taobao.com/trade/detail/tradeSnap.htm?tradeID=3310642419138054399&snapShot=true",
                         "skuId": 0
                     }
                 }
             ],
             "payInfo": {
-                "operations": [
-                    {
-                        "action": "a31",
-                        "style": "t16",
-                        "id": "MODIFY_PRICE",
-                        "text": "修改价格",
-                        "type": "operation",
-                        "disabledText": "使用满减红包或首单礼金等优惠的订单不支持改价"
-                    }
-                ],
                 "postType": "(含快递:￥0.00)",
                 "icons": [
                     {
@@ -1254,7 +1688,7 @@
                         "url": "//img.alicdn.com/tps/i1/T1xRBqXdNAXXXXXXXX-46-16.png"
                     }
                 ],
-                "actualFee": "810.86"
+                "actualFee": "877.12"
             },
             "buyer": {
                 "nick": "y**",
@@ -1272,7 +1706,7 @@
                 "encodeNick": "y**",
                 "id": 0,
                 "guestUser": false,
-                "encodeId": "RAzN8HWQECGUPF2xcoTHk9K639LPvx7EMBjmsMGnLpV71LBWdkZ"
+                "encodeId": "RAzN8HWNagYaKiCpYibwJJRPbgkZhjY8v4NVEWiCbqxYqtH6grM"
             },
             "presentOrder": false
         }

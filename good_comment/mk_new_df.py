@@ -8,7 +8,7 @@ import pandas as pd
 # 字段 '订单编号','退款金额','商家备注'
 # df = pd.read_excel('./db/order_all.xlsx')
 # 字段 主订单编号 商品标题 商品属性
-df2 = pd.read_excel('./db/good0522.xlsx')
+df2 = pd.read_excel('./db/good0618.xlsx')
 
 # df['订单编号'] = df['订单编号'].astype(str)
 df2['主订单编号'] = df2['主订单编号'].astype(str)

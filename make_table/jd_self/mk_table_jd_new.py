@@ -44,6 +44,7 @@ for w_code in w_list:
         headers=my_json,
         params=my_params
     )
+    print('网络状态码',response.status_code)
     data = response.json()
 
     for obj in data['data']['dataSource']:

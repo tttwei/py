@@ -6,6 +6,10 @@ import pyautogui
 import pyperclip
 from tkinter import *
 from pynput import keyboard
+from sqlalchemy import column
+
+top = Tk()
+top.geometry('300x200')
 
 pyautogui.PAUSE = 0  # 关闭默认暂停
 
@@ -13,15 +17,14 @@ pyautogui.PAUSE = 0  # 关闭默认暂停
 FAST = {'send':0.2,'stop':1,'mode':'fast'}
 SLOW = {'send':0.7,'stop':1.5,'mode':'slow'}
 
-press_mode = SLOW
-
+press_mode = FAST
 
 # time.sleep(3)
 # 1为禁止发送
 status_code = 0
 
-top = Tk()
-top.geometry('300x200')
+mode_str = StringVar()
+mode_str.set(press_mode['mode'])
 
 press_text_list=[
 
@@ -132,22 +135,33 @@ def stop_text():
     # time.sleep(1.5)
     change(0)
 
-def reset():
-    print('恢复')
-    change(0)
+def change_mode():
+    print('改模式')
+    # change(0)
+    global press_mode
+    if press_mode == FAST:
+        press_mode = SLOW
+    elif press_mode == SLOW:
+        press_mode = FAST
+    mode_str.set(press_mode['mode'])
 
 def press_F7():
     t = threading.Thread(target=stop_text)
     t.start()
 
-l1 = Label(top,text=f'F6发送 F7停止 当前{press_mode["mode"]}')
+
+l1 = Label(top,text='F6发送 F7停止 当前')
+# l1.grid(row = 0 ,column = 0)
 l1.pack()
+l2 = Label(top,textvariable=mode_str)
+# l2.grid(row = 0 ,column = 1)
+l2.pack()
 
 btn1 = Button(top,text='发送',command=start_send_F6)
 btn1.pack()
 btn2 = Button(top,text='停止',command=press_F7)
 btn2.pack()
-btn3 = Button(top,text='恢复',command=reset)
+btn3 = Button(top,text='切换',command=change_mode)
 btn3.pack()
 
 
