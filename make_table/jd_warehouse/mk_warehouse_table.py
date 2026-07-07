@@ -23,6 +23,7 @@ print("前一天日期：", type(yesterday_str))
 
 row = {
     'id':'0',
+    '总数': '0',
     '成都': '0',
     '德州': '0',
     '北京': '0',
@@ -94,6 +95,9 @@ for i in range(len(df['id'])):
             # print(city)
 
             df.loc[i,city] = val
+        df.loc[i,'总数'] = data['content']['totalRow']['stockQtty']['value'].split('.')[0]
+
+
 
     except json.decoder.JSONDecodeError as e:
         print(e)
