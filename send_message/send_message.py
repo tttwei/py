@@ -36,7 +36,7 @@ special_dict = {
     '老丛私房蜜兰香':'您拍的这款老丛私房蜜兰丨乌岽核心产区，珍贵名丛，蜜韵甘甜，您付款',
     '老丛私房八仙':'您拍的这款老丛私房八仙丨乌岽核心产区，珍贵名丛，醇和甘爽，您付款',
     '老丛私房东方红':'您拍的这款老丛私房东方红丨乌岽核心产区，百年树龄，香韵独特，您付款',
-    '老丛私房宋种':'您拍的这款老丛私房宋种丨乌岽核心产区，百年树龄，花香浓密，您付款',
+    '老丛私房宋种':'亲亲 ，您拍的这款老丛私房宋种丨乌岽核心产区，百年树龄，花香浓密，您付款后咱们联系仓库给您优先安顺丰发货哈 戳',
     '老丛私房凹富后':'您拍的这款老丛私房凹富后，是老丛庄园茶 也是珍贵名丛 ，特别适合资深老茶客，口感很不错哈，您付款',
     '老丛私房姜花香':'您拍的这款老丛私房姜花香，是老丛庄园茶 也是珍贵名丛 ，特别适合资深老茶客，口感很不错哈，您付款',
     '购物金':'您可以充值下咱们的购物金哈，充值1500得1600，充值3000得3300哈，您可以充值后下单',
@@ -58,8 +58,8 @@ dir_path = os.path.dirname(os.path.abspath(__file__))
 
 def my_send_msg(order_num,tee_type):
     # num = '2701754007048029192'
-    edge_path = os.path.join(dir_path,'img','edge.png')
-    x, y = pyautogui.locateCenterOnScreen(edge_path, region=(597, 1142, 703, 58), confidence=0.9)
+    edge_path = os.path.join(dir_path,'img','e1.png')
+    x, y = pyautogui.locateCenterOnScreen(edge_path, region= (350, 1017,1076,59), confidence=0.9)
     # x, y = pyautogui.locateCenterOnScreen('./img/edge.png', confidence=0.7)
     # print(datetime.now())
     # if order_num == '' or tee_type == '':
@@ -69,11 +69,11 @@ def my_send_msg(order_num,tee_type):
 
     pyautogui.click(x, y, duration=0.3)
 
-    pyautogui.click(428,26,duration=0.2)
-    pyautogui.moveTo(464, 528, duration=0.2)
+    pyautogui.click(392,25,duration=0.2)
+    pyautogui.moveTo(386, 478, duration=0.2)
     pyautogui.scroll(1200)
     pyautogui.click(duration=0.2)
-    pyautogui.click(810,660,duration=0.2)
+    pyautogui.click(769,595,duration=0.2)
     time.sleep(0.1)
     # sys.exit(0)
     # pyautogui.write(num,interval=0.1)
@@ -81,15 +81,16 @@ def my_send_msg(order_num,tee_type):
     pyperclip.copy(order_num+'')
     pyautogui.hotkey("ctrl", "v")
 
-    pyautogui.click(1692,1083,duration=0.2)
+    # 确认
+    pyautogui.click(1609,969,duration=0.2)
 
-    pyautogui.click(620,554,duration=0.2)
-    pyautogui.scroll(-720)
+    pyautogui.click(588,365,duration=0.2)
+    pyautogui.scroll(-620)
 
-    pyautogui.click(620,284,duration=0.2)
+    pyautogui.click(588,365,duration=0.2)
 
 
-    pyautogui.click(620,500,duration=0.5)
+    pyautogui.click(603,438,duration=0.5)
 
 
     pyperclip.copy(special_dict[tee_type])
@@ -97,12 +98,12 @@ def my_send_msg(order_num,tee_type):
 
     pyautogui.hotkey("ctrl", "v")
 
-    pyautogui.click(889,484,duration=0.2)
+    pyautogui.click(911,444,duration=0.2)
 
 
-    pyautogui.click(1475,672,duration=2)
+    pyautogui.click(1407,601,duration=2)
 
-    pyautogui.click(1789,1070,duration=0.2)
+    pyautogui.click(1809,969,duration=0.2)
 
     # time.sleep(0.5)
     # pyautogui.moveTo(869,719,duration=1)
