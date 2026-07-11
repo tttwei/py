@@ -58,6 +58,7 @@ dir_path = os.path.dirname(os.path.abspath(__file__))
 
 def my_send_msg(order_num,tee_type):
     # num = '2701754007048029192'
+    # 1
     edge_path = os.path.join(dir_path,'img','edge.png')
     x, y = pyautogui.locateCenterOnScreen(edge_path, region=(597, 1142, 703, 58), confidence=0.9)
     # x, y = pyautogui.locateCenterOnScreen('./img/edge.png', confidence=0.7)
