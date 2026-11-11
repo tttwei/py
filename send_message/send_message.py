@@ -118,19 +118,29 @@ def my_send_msg(order_num,tee_type):
 
     pyautogui.click(x, y, duration=0.5)
 
-
 # 读取文件
 def together_read():
+    a_map = {}
     a_path = os.path.join(dir_path,'a.txt')
     f = open(a_path, 'r', encoding='utf-8')
     readline = f.readline()
     while readline:
-        str_array = readline.replace("\n","").split(' ')
+        str_array = readline.replace("\n", "").split(' ')
 
-        my_send_msg(str_array[0], str_array[1])
+        if str_array[1] in a_map:
+            a_map[str_array[1]] = a_map[str_array[1]] + str_array[0] + '\n'
+        else:
+            a_map[str_array[1]] = str_array[0] + '\n'
+
+
+        # my_send_msg(str_array[0], str_array[1])
 
         # print(str_array[0],str_array[1])
         readline = f.readline()
+    for i in a_map.keys():
+        print(i)
+        print(a_map[i])
+        my_send_msg(a_map[i],i)
 
 def one_send():
     my_send_msg(s1.get(),s2.get())
