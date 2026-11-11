@@ -40,6 +40,7 @@ special_dict = {
     '老丛私房凹富后':'您拍的这款老丛私房凹富后，是老丛庄园茶 也是珍贵名丛 ，特别适合资深老茶客，口感很不错哈，您付款',
     '老丛私房姜花香':'您拍的这款老丛私房姜花香，是老丛庄园茶 也是珍贵名丛 ，特别适合资深老茶客，口感很不错哈，您付款',
     '购物金':'您可以充值下咱们的购物金哈，充值1500得1600，充值3000得3300哈，您可以充值后下单',
+    '天山红':'亲亲 ，您拍的这款天山红丨醇厚饱满，入口温顺，您付款后咱们联系仓库给您优先安排发货哈',
 }
 
 top = Tk()
@@ -87,7 +88,9 @@ def my_send_msg(order_num,tee_type):
     pyautogui.click(620,554,duration=0.2)
     pyautogui.scroll(-720)
 
-    pyautogui.click(620,284,duration=0.2)
+    # ⭐变动
+    # pyautogui.click(620,372,duration=0.2)
+    pyautogui.click(620,292,duration=0.2)
 
 
     pyautogui.click(620,500,duration=0.5)
@@ -176,6 +179,7 @@ cmb['values'] = (
     '鸭屎桂花',
     '鸭屎锯朵',
     '鸭屎岽顶',
+    '天山红',
 
 )
 
