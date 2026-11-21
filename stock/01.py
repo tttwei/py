@@ -1,3 +1,5 @@
+import time
+
 import akshare as ak
 import pandas as pd
 from sqlalchemy import create_engine
@@ -43,25 +45,28 @@ engine = create_engine('mysql+pymysql://root:123456@localhost:3306/machine_tradi
 # 酒etf,保险lof,汽车etf,证券etf,半导体etf,银行etf,电力etf,消费电子etf,,,,,,,,,,
 # etf_list = ['512690','167301','159512','512880','512480','159611','159732']
 
-fund_etf_hist_em_df = ak.fund_etf_hist_em(symbol="167301", period="daily", start_date="20250428", end_date="20250913", adjust="qfq")
-print(fund_etf_hist_em_df)
+# fund_etf_hist_em_df = ak.fund_etf_hist_em(symbol="167301", period="daily", start_date="20250428", end_date="20250913", adjust="qfq")
+# print(fund_etf_hist_em_df)
 df = ak.stock_board_industry_hist_em(symbol='BK0475',
-                                 start_date="20250428",
-                                 end_date="20250913",
+                                 start_date="20260105",
+                                 end_date="20261021",
                                  period="日k",
                                  adjust="qfq")
-df.to_sql('bk0475', con=engine, index=False, if_exists='append')
-'''
-for i in bk_list:
-    df = ak.fund_etf_hist_em(symbol=i, period="daily", start_date="20250428", end_date="20250913", adjust="qfq")
-    # print(fund_etf_hist_em_df)
-    # print(stock_zh_a_hist_df)
-    print("获取akShare api数据......")
-    print(df)
-    # 写入到数据库中的表（如果表存在就替换）
-    # df.to_sql(i.replace('BK','bk'), con=engine, index=False, if_exists='replace')
-    df.to_sql('etf'+ i , con=engine, index=False, if_exists='append')
-'''
+df.to_sql('n1bk0475', con=engine, index=False, if_exists='append')
+# bk0475
+#
+# for i in bk_list:
+#     # time.sleep(5)
+#     df = ak.fund_etf_hist_em(symbol=i, period="daily", start_date="20260105", end_date="20261021", adjust="qfq")
+#     # print(fund_etf_hist_em_df)
+#     # print(stock_zh_a_hist_df)
+#     print("获取akShare api数据......")
+#     print(df)
+#     # 写入到数据库中的表（如果表存在就替换）
+#     # df.to_sql(i.replace('BK','bk'), con=engine, index=False, if_exists='replace')
+#     df.to_sql('n1-etf'+ i , con=engine, index=False, if_exists='append')
+#     print(i+'输入完成')
+
 # print(ak.stock_board_industry_name_em())
 # ak.stock_board_industry_name_em().to_sql('bkmap', con=engine, index=True)
 
