@@ -2,7 +2,6 @@ import json
 import time
 from datetime import datetime, timedelta
 from decimal import Decimal
-from operator import index
 
 import requests
 import pandas as pd
@@ -17,7 +16,7 @@ today = datetime.now()
 # 计算前一天日期
 yesterday = today - timedelta(days=1)
 # 格式化为字符串
-# yesterday_str = "2026-05-29"
+# yesterday_str = "2026-11-21"
 yesterday_str = yesterday.strftime("%Y-%m-%d")
 print("前一天日期：", yesterday_str)
 print("前一天日期：", type(yesterday_str))
@@ -73,7 +72,7 @@ def native_friend():
 
     response2 = requests.get(url=a02_url,headers=my_json)
     time.sleep(1.5)
-    print('网络状态码', response2.status_code)
+    print('网络状态码', response2.status_code,response2.json())
 
     response3 = requests.get(url=a03_url,headers=my_json)
     print('网络状态码', response3.status_code)
@@ -84,18 +83,39 @@ def native_friend():
     data1 = response1.json()
     print('累计客户数',data1['data']['totalCustomer']['value'])
     print('累计退订数',data1['data']['totalUnsubscribeCustomer']['value'])
+    print('新增退订客户数',data1['data']['addUnsubscribeCustomer']['value'])
 
     # 店铺会员
 
     data2 = response2.json()
     # print(data2)
     print('增加会员',data2['content']['data']['newMember']['value'])
+    print('会员总数',data2['content']['data']['memberCount']['value'])
 
     # 粉丝群
 
     data3 = response3.json()
     print('新增粉丝数',data3['content']['data']['addFansCnt']['value'])
     print('粉丝总数',data3['content']['data']['totalFansCnt']['value'])
+
+    my_dict1={
+        '日期':yesterday_str,
+        '手动邀请人数': 0,
+        '手动增加人数': 0,
+        '总增量人数':0,
+        '新增退订数量':data1['data']['addUnsubscribeCustomer']['value'],
+        '累计退订数量':data1['data']['totalUnsubscribeCustomer']['value'],
+        '累计增量专属客服':data1['data']['totalCustomer']['value'],
+        '手动邀请':0,
+        '每日增量':data2['content']['data']['newMember']['value'],
+        '累计增量会员':data2['content']['data']['memberCount']['value'],
+        '新增人数':0,
+        '累计汇总':0,
+        '新增粉丝':data3['content']['data']['addFansCnt']['value'],
+        '粉丝汇总':data3['content']['data']['totalFansCnt']['value'],
+    }
+    df =  pd.DataFrame(my_dict1,index=[0])
+    df.to_excel('./output/d1_私人好友.xlsx')
 
 # 千庭店铺数据
 # print('网络状态码',response4.status_code)
@@ -191,7 +211,7 @@ def self_shop(data_1,data_2,file_name):
 
     df1 = pd.DataFrame(my_dict, index=[0])
     print(str(df1))
-    df1.to_excel(f'./d1_{file_name}.xlsx')
+    df1.to_excel(f'./output/d2_{file_name}.xlsx')
 
 # 其他店铺（单一店铺）
 def other_shop(data_1,data_2,file_name):
@@ -264,7 +284,7 @@ def other_shop(data_1,data_2,file_name):
         my_dict2['汇总2'] = data_2['data']['rivalShop1']['payByrCnt']['value']
 
     df2 = pd.DataFrame(my_dict2, index=[0])
-    df2.to_excel(f'./d2_{file_name}.xlsx')
+    df2.to_excel(f'./output/d2_{file_name}.xlsx')
 
 def mk_other_shop():
 
@@ -317,7 +337,7 @@ def mk_taobao_broadcast():
     time.sleep(1.5)
     print('网络状态码：', res2.status_code, res2.json())
 
-    taobao_broadcast(res1.json(),res2.json(),'d_淘宝直播.xlsx')
+    taobao_broadcast(res1.json(),res2.json(),'./output/d3_淘宝直播.xlsx')
 
 # 调用
 print('调用1...........')
